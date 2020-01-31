@@ -1,6 +1,6 @@
 package `fun`.gladkikh.app.fastcargo.remote.core
 
-class RequestEntity(
+data class RequestEntity(
     val uid:String,
     val data: String
 )

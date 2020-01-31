@@ -5,7 +5,6 @@ import `fun`.gladkikh.app.fastcargo.common.type.Failure
 import `fun`.gladkikh.app.fastcargo.remote.core.Request
 import `fun`.gladkikh.app.fastcargo.remote.core.RequestEntity
 import `fun`.gladkikh.app.fastcargo.remote.service.ApiFactory
-import `fun`.gladkikh.app.fastcargo.remote.service.ServiceFactory
 import `fun`.gladkikh.app.fastcargo.remote.util.AuthorizationUtil
 import `fun`.gladkikh.app.fastpallet8.Constants
 
@@ -27,11 +26,11 @@ class RequestRemoteImpl constructor(
             val apiService = ApiFactory().getApi(baseUrl)
 
             val auth = AuthorizationUtil.getStringAutorization(user, password)
-            val reqestEntity = RequestEntity(
+            val requestEntity = RequestEntity(
                 Constants.UID ?: "",
                 data
             )
-            return request.make(apiService.getDataFromServer(auth, reqestEntity)) {
+            return request.make(apiService.getDataFromServer(auth, requestEntity)) {
                 it.data
             }
         } catch (e: Exception) {
