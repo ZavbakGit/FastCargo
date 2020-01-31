@@ -1,0 +1,39 @@
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<!--        <EditTextPreference-->
+<!--            android:key="edittext"-->
+<!--            android:title="Some input"-->
+<!--            app:useSimpleSummaryProvider="true"-->
+<!--            android:dialogTitle="This is the title"/>-->
+
+        <EditTextPreference
+            android:summary="Адрес хоста"
+            android:key="preference_host"
+            android:inputType="textUri"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Host" />
+        <EditTextPreference
+            android:summary="Логин"
+            android:key="preference_login"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Login" />
+
+        <EditTextPreference
+            android:summary="Пароль"
+            android:key="preference_pass"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Password"/>
+
+        <ListPreference
+            android:entries="@array/entries_type_tsd"
+            android:entryValues="@array/entry_values_tsd"
+            android:key="list_tsd"
+            android:summary="Терминал сбора данных"
+            android:defaultValue="1"
+            android:title="ТСД">
+        </ListPreference>
+
+</androidx.preference.PreferenceScreen>
