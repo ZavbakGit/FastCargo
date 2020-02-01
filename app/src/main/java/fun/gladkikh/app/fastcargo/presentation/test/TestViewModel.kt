@@ -17,6 +17,7 @@ class TestViewModel @Inject constructor(
     private val saveSettingsUseCase: SaveSettingsUseCase,
     private val saveAccountUseCase: SaveAccountUseCase,
     private val getAccountUseCase: GetAccountUseCase,
+    private val testRemoteRequestUseCase: TestRemoteRequestUseCase,
     private val loginAccountUseCase: LoginAccountUseCase
 ) : BaseViewModel() {
     private val message = MutableLiveData<String>()
@@ -58,6 +59,14 @@ class TestViewModel @Inject constructor(
         saveSettingsUseCase(settings,viewModelScope){either ->
             either.either(::handleError) {
                 handleMessage("Сохранили!")
+            }
+        }
+    }
+
+    fun testRemoteRequest(){
+        testRemoteRequestUseCase(None(),viewModelScope){either ->
+            either.either(::handleError) {
+                handleMessage(it)
             }
         }
     }

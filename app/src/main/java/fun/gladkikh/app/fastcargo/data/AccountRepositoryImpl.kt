@@ -21,6 +21,17 @@ class AccountRepositoryImpl(private val preferences: Preferences,
         return preferences.saveAccountEntity(account)
     }
 
+    override fun testRemoteRequest(): Either<Failure, String>{
+        val data = TestRemoteRequestData("test")
+        return preferences.getSettings().flatMap {
+            try {
+                requestRemote.request(it.login1C!!,it.password1C!!,it.host!!,gson.toJson(data))
+            } catch (e: Exception) {
+                return@flatMap Either.Left(Failure(e.message))
+            }
+        }
+    }
+
     override fun login(password:String): Either<Failure, String>{
         val data = LoginData("login",password)
         return preferences.getSettings().flatMap {
@@ -33,5 +44,6 @@ class AccountRepositoryImpl(private val preferences: Preferences,
     }
 
     private data class LoginData(val command:String,val password:String)
+    private data class TestRemoteRequestData(val command:String)
 
 }

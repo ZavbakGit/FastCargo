@@ -46,6 +46,10 @@ class TestActivity : BaseActivity() {
             viewModel.saveTestSettings()
         }
 
+        btTestRequestRemote.setOnClickListener {
+            viewModel.testRemoteRequest()
+        }
+
         btLogin.setOnClickListener {
             viewModel.login()
         }

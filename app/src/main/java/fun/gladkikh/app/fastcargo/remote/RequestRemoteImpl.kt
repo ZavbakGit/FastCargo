@@ -5,8 +5,10 @@ import `fun`.gladkikh.app.fastcargo.common.type.Failure
 import `fun`.gladkikh.app.fastcargo.remote.core.Request
 import `fun`.gladkikh.app.fastcargo.remote.core.RequestEntity
 import `fun`.gladkikh.app.fastcargo.remote.service.ApiFactory
+import `fun`.gladkikh.app.fastcargo.remote.service.ServiceFactory
 import `fun`.gladkikh.app.fastcargo.remote.util.AuthorizationUtil
 import `fun`.gladkikh.app.fastpallet8.Constants
+import com.google.gson.GsonBuilder
 
 
 class RequestRemoteImpl constructor(
@@ -21,15 +23,18 @@ class RequestRemoteImpl constructor(
 
         try {
             //val serviceFactory = ServiceFactory(baseUrl)
+            val serviceFactory = ServiceFactory(baseUrl)
 
-            //val apiService = serviceFactory.makeService(Constants.IS_TEST_BUILD)
-            val apiService = ApiFactory().getApi(baseUrl)
+            val apiService = serviceFactory.makeService(Constants.IS_TEST_BUILD)
+            //val apiService = ApiFactory().getApi(baseUrl)
 
-            val auth = AuthorizationUtil.getStringAutorization(user, password)
+            val auth = "0JDQtNC80LjQvToxMjM="//AuthorizationUtil.getStringAutorization("Админ", "111")
             val requestEntity = RequestEntity(
-                Constants.UID ?: "",
+                //Constants.UID ?: "",
                 data
             )
+
+
             return request.make(apiService.getDataFromServer(auth, requestEntity)) {
                 it.data
             }

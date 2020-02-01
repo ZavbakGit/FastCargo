@@ -10,4 +10,5 @@ interface AccountRepository {
     fun getAccountEntity(): Either<Failure, AccountEntity>
     fun saveAccountEntity(account: AccountEntity): Either<Failure, None>
     fun login(password: String): Either<Failure, String>
+    fun testRemoteRequest(): Either<Failure, String>
 }
