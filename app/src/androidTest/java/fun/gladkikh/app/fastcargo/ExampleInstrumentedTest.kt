@@ -1,7 +1,5 @@
 package `fun`.gladkikh.app.fastcargo
 
-import `fun`.gladkikh.app.fastcargo.remote.RequestRemoteImpl
-import `fun`.gladkikh.app.fastcargo.remote.util.NetworkHandler
 import `fun`.gladkikh.app.fastcargo.remote.RequestRemoteImpl1
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -23,8 +21,7 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
 
         val requreImpl = RequestRemoteImpl1(
-            appContext, true, "http://172.31.255.150//UT/hs/api/",
-            Date()
+            appContext, true, "http://172.31.255.150//UT/hs/api/"
         )
 
 

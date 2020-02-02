@@ -55,6 +55,18 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btCheckSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Проверить настройки" />
+
+            <Button
+                android:id="@+id/btCleanSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Удалить настройки" />
+
+            <Button
                 android:id="@+id/btLogin1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

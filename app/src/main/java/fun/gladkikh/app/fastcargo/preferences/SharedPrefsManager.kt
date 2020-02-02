@@ -89,19 +89,19 @@ class SharedPrefsManager @Inject constructor(
 }
 
 fun SharedPreferences.Editor.putSafely(key: String, value: Int?) {
-    if (value != null && value != 0) {
+    if (value != null ) {
         putInt(key, value)
     }
 }
 
 fun SharedPreferences.Editor.putSafely(key: String, value: Long?) {
-    if (value != null && value != 0L) {
+    if (value != null ) {
         putLong(key, value)
     }
 }
 
 fun SharedPreferences.Editor.putSafely(key: String, value: String?) {
-    if (value != null && value.isNotEmpty()) {
+    if (value != null ) {
         putString(key, value)
     }
 }

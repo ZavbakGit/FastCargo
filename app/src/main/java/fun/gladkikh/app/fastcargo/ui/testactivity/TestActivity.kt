@@ -63,6 +63,12 @@ class TestActivity : BaseActivity() {
             viewModel.login3()
         }
 
+        btCleanSetting.setOnClickListener {
+            viewModel.clearSettings()
+        }
+        btCheckSetting.setOnClickListener {
+            viewModel.checkSetting()
+        }
     }
 
     private fun handleMessage(message: String?) {

@@ -19,7 +19,8 @@ class TestViewModel @Inject constructor(
     private val saveAccountUseCase: SaveAccountUseCase,
     private val getAccountUseCase: GetAccountUseCase,
     private val testRemoteRequestUseCase: TestRemoteRequestUseCase,
-    private val loginAccountUseCase: LoginAccountUseCase
+    private val loginAccountUseCase: LoginAccountUseCase,
+    private val checkSettingsUseCase: CheckSettingsUseCase
 ) : BaseViewModel() {
     private val message = MutableLiveData<String>()
     fun getMessage(): LiveData<String> = message
@@ -95,6 +96,32 @@ class TestViewModel @Inject constructor(
         loginAccountUseCase("333",viewModelScope){either ->
             either.either(::handleError) {
                 handleMessage(it.toString())
+            }
+        }
+    }
+
+    fun clearSettings(){
+        val settings =  SettingsEntity(
+            login1C = "",
+            password1C = "",
+            host = "",
+            date = Date(),
+            pdt = 1
+        )
+        App.initRequestRemote(settings.host!!)
+        //ToDo Не забыть инициализировать
+
+        saveSettingsUseCase(settings,viewModelScope){either ->
+            either.either(::handleError) {
+                handleMessage("Сохранили!")
+            }
+        }
+    }
+
+    fun checkSetting(){
+        checkSettingsUseCase(None(),viewModelScope){either ->
+            either.either(::handleError) {
+                handleMessage("Ок")
             }
         }
     }
