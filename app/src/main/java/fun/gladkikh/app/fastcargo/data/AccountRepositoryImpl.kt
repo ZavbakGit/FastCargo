@@ -7,7 +7,6 @@ import `fun`.gladkikh.app.fastcargo.common.type.None
 import `fun`.gladkikh.app.fastcargo.common.type.flatMap
 import `fun`.gladkikh.app.fastcargo.domain.entity.AccountEntity
 import `fun`.gladkikh.app.fastcargo.domain.repository.AccountRepository
-import `fun`.gladkikh.app.fastcargo.remote1.RequestRemote
 
 import com.google.gson.Gson
 

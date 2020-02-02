@@ -1,4 +1,4 @@
-package `fun`.gladkikh.app.fastcargo.remote1.entity
+package `fun`.gladkikh.app.fastcargo.remote.entity
 
 class ResponseEntity(
     val success: Int,

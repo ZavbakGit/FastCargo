@@ -2,24 +2,29 @@ package `fun`.gladkikh.app.fastcargo.remote.core
 
 
 import `fun`.gladkikh.app.fastcargo.common.type.Either
+import `fun`.gladkikh.app.fastcargo.common.type.ErrorDescriptionFailure
 import `fun`.gladkikh.app.fastcargo.common.type.Failure
-import `fun`.gladkikh.app.fastcargo.remote.util.NetworkHandler
-import com.google.gson.Gson
+import `fun`.gladkikh.app.fastcargo.common.type.NetworkConnectionFailure
+
+import `fun`.gladkikh.app.fastcargo.remote.entity.ResponseEntity
+
+
+import com.google.gson.GsonBuilder
+import retrofit2.Call
 import retrofit2.Response
-import javax.inject.Inject
 
 
-class Request @Inject constructor(private val networkHandler: NetworkHandler, val gson: Gson) {
+class Request constructor(private val networkHandler: NetworkHandler) {
 
-    fun <T : ResponseEntity, R> make(call: retrofit2.Call<T>, transform: (T) -> R): Either<Failure, R> {
+    fun <T : ResponseEntity, R> make(call: Call<T>, transform: (T) -> R): Either<Failure, R> {
         return when (networkHandler.isConnected) {
             true -> execute(call, transform)
-            false, null -> Either.Left(NetworkConnectionError())
+            false, null -> Either.Left(NetworkConnectionFailure())
         }
     }
 
     private fun <T : ResponseEntity, R> execute(
-        call: retrofit2.Call<T>,
+        call: Call<T>,
         transform: (T) -> R
     ): Either<Failure, R> {
         return try {
@@ -29,30 +34,29 @@ class Request @Inject constructor(private val networkHandler: NetworkHandler, va
                 false -> Either.Left(response.parseError())
             }
         } catch (exception: Throwable) {
-            Either.Left(ServerError(exception))
+            Either.Left(Failure(exception.message))
         }
-    }
-
-    fun <T : ResponseEntity> Response<T>.isSucceed(): Boolean {
-        return isSuccessful && body() != null && (body() as ResponseEntity).success == 1
-    }
-
-    fun <T : ResponseEntity> Response<T>.parseError(): Failure {
-        val message = (body() as ResponseEntity).error
-
-        val error = gson.fromJson(message, ErrorDescriptionEntity::class.java)
-        return ServerErrorByDescription(
-            ErrorDescriptionEntity(
-                code = error.code,
-                description = error.description,
-                extra = error.extra
-            )
-        )
-
     }
 }
 
+fun <T : ResponseEntity> Response<T>.isSucceed(): Boolean {
+    return isSuccessful && body() != null && (body() as ResponseEntity).success == 1
+}
 
+fun <T : ResponseEntity> Response<T>.parseError(): Failure {
+    val message = (body() as ResponseEntity).error
+    val builder = GsonBuilder()
+    val gson = builder.create()
+    val error = gson.fromJson(message, ErrorDescriptionEntity::class.java)
+    return ErrorDescriptionFailure(
+        ErrorDescriptionEntity(
+            code = error.code,
+            description = error.description,
+            extra = error.extra
+        )
+    )
+
+}
 
 
 

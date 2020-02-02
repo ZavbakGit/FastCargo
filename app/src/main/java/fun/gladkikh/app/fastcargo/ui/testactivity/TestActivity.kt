@@ -2,6 +2,7 @@ package `fun`.gladkikh.app.fastcargo.ui.testactivity
 
 import `fun`.gladkikh.app.fastcargo.App
 import `fun`.gladkikh.app.fastcargo.R
+import `fun`.gladkikh.app.fastcargo.common.type.ErrorDescriptionFailure
 import `fun`.gladkikh.app.fastcargo.common.type.Failure
 import `fun`.gladkikh.app.fastcargo.common.ui.BaseActivity
 import `fun`.gladkikh.app.fastcargo.common.ui.ext.onEvent
@@ -73,6 +74,15 @@ class TestActivity : BaseActivity() {
     }
 
     private fun handleFailure(failure: Failure?) {
-        tvMessage.text = "fail: ${failure?.message ?: ""}" + "\n\n" + tvMessage.text
+        when(failure){
+            is ErrorDescriptionFailure ->{
+                tvMessage.text = "fail: ${failure?.errorDescriptionEntity.description ?: ""}" + "\n\n" + tvMessage.text
+            }
+            else ->{
+                tvMessage.text = "fail: ${failure?.message ?: ""}" + "\n\n" + tvMessage.text
+            }
+        }
+
+
     }
 }

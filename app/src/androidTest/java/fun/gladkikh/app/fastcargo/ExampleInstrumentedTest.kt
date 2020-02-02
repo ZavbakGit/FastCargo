@@ -1,12 +1,10 @@
 package `fun`.gladkikh.app.fastcargo
 
 import `fun`.gladkikh.app.fastcargo.remote.RequestRemoteImpl
-import `fun`.gladkikh.app.fastcargo.remote.core.Request
 import `fun`.gladkikh.app.fastcargo.remote.util.NetworkHandler
-import `fun`.gladkikh.app.fastcargo.remote1.RequestRemoteImpl1
+import `fun`.gladkikh.app.fastcargo.remote.RequestRemoteImpl1
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.google.gson.GsonBuilder
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith

@@ -7,10 +7,5 @@ import `fun`.gladkikh.app.fastcargo.common.type.Failure
 
 
 interface RequestRemote {
-    fun request(
-        user: String,
-        password: String,
-        baseUrl: String,
-        data: String
-    ): Either<Failure, String>
+    fun request(user:String,password:String,data: String): Either<Failure, String>
 }

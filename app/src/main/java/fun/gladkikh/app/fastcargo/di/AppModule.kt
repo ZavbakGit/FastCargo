@@ -5,15 +5,9 @@ import `fun`.gladkikh.app.fastcargo.data.Preferences
 import `fun`.gladkikh.app.fastcargo.data.SettingsRepositoryImpl
 import `fun`.gladkikh.app.fastcargo.domain.repository.AccountRepository
 import `fun`.gladkikh.app.fastcargo.domain.repository.SettingsRepository
-import `fun`.gladkikh.app.fastcargo.preferences.PreferencesImpl
-import `fun`.gladkikh.app.fastcargo.preferences.SharedPrefsManager
-import `fun`.gladkikh.app.fastcargo.remote1.RequestRemote
 
 import android.content.Context
-import android.content.SharedPreferences
-import androidx.preference.PreferenceManager
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 

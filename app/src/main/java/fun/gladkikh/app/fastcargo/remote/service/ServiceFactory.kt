@@ -1,11 +1,17 @@
 package `fun`.gladkikh.app.fastcargo.remote.service
 
+
+import android.os.Build
+import android.util.Log
 import com.google.gson.Gson
+import okhttp3.ConnectionSpec
 import okhttp3.OkHttpClient
+import okhttp3.TlsVersion
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.net.ssl.SSLContext
 
 class ServiceFactory(val baseUrl:String) {
 
@@ -18,7 +24,7 @@ class ServiceFactory(val baseUrl:String) {
 
     private fun makeService(okHttpClient: OkHttpClient, gson: Gson): ApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl("http://172.31.255.150//UT/hs/api/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
@@ -27,6 +33,7 @@ class ServiceFactory(val baseUrl:String) {
 
     private fun makeOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
+            .enableTls12OnPreLollipop()
             .addInterceptor(httpLoggingInterceptor)
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
@@ -41,5 +48,30 @@ class ServiceFactory(val baseUrl:String) {
             HttpLoggingInterceptor.Level.NONE
         }
         return logging
+    }
+
+    fun OkHttpClient.Builder.enableTls12OnPreLollipop(): OkHttpClient.Builder {
+        if (Build.VERSION.SDK_INT >= 16 && Build.VERSION.SDK_INT < 22) {
+            try {
+                val sc = SSLContext.getInstance("TLSv1.2")
+                sc.init(null, null, null)
+                this.sslSocketFactory(Tls12SocketFactory(sc.socketFactory))
+
+                val cs = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                    .tlsVersions(TlsVersion.TLS_1_2)
+                    .build()
+
+                val specs = ArrayList<ConnectionSpec>()
+                specs.add(cs)
+                specs.add(ConnectionSpec.COMPATIBLE_TLS)
+                specs.add(ConnectionSpec.CLEARTEXT)
+
+                this.connectionSpecs(specs)
+            } catch (exc: Exception) {
+                Log.e("OkHttpTLSCompat", "Error while setting TLS 1.2", exc)
+            }
+
+        }
+        return this
     }
 }

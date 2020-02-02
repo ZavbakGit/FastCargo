@@ -1,7 +1,7 @@
 package `fun`.gladkikh.app.fastcargo.remote.service
 
-import `fun`.gladkikh.app.fastcargo.remote.core.RequestEntity
-import `fun`.gladkikh.app.fastcargo.remote.core.ResponseEntity
+import `fun`.gladkikh.app.fastcargo.remote.entity.RequestEntity
+import `fun`.gladkikh.app.fastcargo.remote.entity.ResponseEntity
 import retrofit2.Call
 import retrofit2.http.*
 

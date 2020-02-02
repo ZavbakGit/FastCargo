@@ -1,18 +1,17 @@
-package `fun`.gladkikh.app.fastcargo.remote1
+package `fun`.gladkikh.app.fastcargo.remote
 
 import `fun`.gladkikh.app.fastcargo.common.type.Either
 import `fun`.gladkikh.app.fastcargo.common.type.Failure
 
 
 
-import `fun`.gladkikh.app.fastcargo.remote1.core.AutorithationUtil
-import `fun`.gladkikh.app.fastcargo.remote1.core.NetworkHandler
-import `fun`.gladkikh.app.fastcargo.remote1.core.Request
-import `fun`.gladkikh.app.fastcargo.remote1.entity.RequestEntity
-import `fun`.gladkikh.app.fastcargo.remote1.service.ServiceFactory
+import `fun`.gladkikh.app.fastcargo.remote.core.AutorithationUtil
+import `fun`.gladkikh.app.fastcargo.remote.core.NetworkHandler
+import `fun`.gladkikh.app.fastcargo.remote.core.Request
+import `fun`.gladkikh.app.fastcargo.remote.entity.RequestEntity
+import `fun`.gladkikh.app.fastcargo.remote.service.ServiceFactory
 
 import android.content.Context
-import java.util.*
 
 
 class RequestRemoteImpl1 constructor(

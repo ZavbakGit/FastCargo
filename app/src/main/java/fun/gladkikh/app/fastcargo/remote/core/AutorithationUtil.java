@@ -1,4 +1,4 @@
-package fun.gladkikh.app.fastcargo.remote1.core;
+package fun.gladkikh.app.fastcargo.remote.core;
 
 /**
  * Return String autorithation Russin

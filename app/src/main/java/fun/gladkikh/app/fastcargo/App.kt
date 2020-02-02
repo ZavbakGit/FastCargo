@@ -3,8 +3,8 @@ package `fun`.gladkikh.app.fastcargo
 import `fun`.gladkikh.app.fastcargo.di.AppModule
 import `fun`.gladkikh.app.fastcargo.di.ServicesModule
 import `fun`.gladkikh.app.fastcargo.di.ViewModelModule
-import `fun`.gladkikh.app.fastcargo.remote1.RequestRemote
-import `fun`.gladkikh.app.fastcargo.remote1.RequestRemoteImpl1
+import `fun`.gladkikh.app.fastcargo.remote.RequestRemote
+import `fun`.gladkikh.app.fastcargo.remote.RequestRemoteImpl1
 import `fun`.gladkikh.app.fastcargo.ui.settings.SettingsFragment
 import `fun`.gladkikh.app.fastcargo.ui.testactivity.TestActivity
 import `fun`.gladkikh.app.fastpallet8.Constants

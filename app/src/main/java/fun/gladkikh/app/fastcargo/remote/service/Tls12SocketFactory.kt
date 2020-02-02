@@ -1,4 +1,4 @@
-package `fun`.gladkikh.app.fastcargo.remote.util
+package `fun`.gladkikh.app.fastcargo.remote.service
 
 import java.net.InetAddress
 import java.net.Socket
@@ -36,4 +36,3 @@ class Tls12SocketFactory(private val delegate: SSLSocketFactory) : SSLSocketFact
             = patch(delegate.createSocket(host, port, localAddress, localPort))
 
 }
-

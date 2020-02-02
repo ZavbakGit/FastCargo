@@ -4,7 +4,7 @@ import `fun`.gladkikh.app.fastcargo.App
 import `fun`.gladkikh.app.fastcargo.data.Preferences
 import `fun`.gladkikh.app.fastcargo.preferences.PreferencesImpl
 import `fun`.gladkikh.app.fastcargo.preferences.SharedPrefsManager
-import `fun`.gladkikh.app.fastcargo.remote1.RequestRemote
+import `fun`.gladkikh.app.fastcargo.remote.RequestRemote
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
