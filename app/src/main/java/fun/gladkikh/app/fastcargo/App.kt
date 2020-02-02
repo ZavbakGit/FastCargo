@@ -3,7 +3,11 @@ package `fun`.gladkikh.app.fastcargo
 import `fun`.gladkikh.app.fastcargo.di.AppModule
 import `fun`.gladkikh.app.fastcargo.di.ServicesModule
 import `fun`.gladkikh.app.fastcargo.di.ViewModelModule
+import `fun`.gladkikh.app.fastcargo.remote1.RequestRemote
+import `fun`.gladkikh.app.fastcargo.remote1.RequestRemoteImpl1
+import `fun`.gladkikh.app.fastcargo.ui.settings.SettingsFragment
 import `fun`.gladkikh.app.fastcargo.ui.testactivity.TestActivity
+import `fun`.gladkikh.app.fastpallet8.Constants
 import android.app.Application
 import android.content.Context
 import dagger.Component
@@ -18,14 +22,19 @@ class App : Application() {
     companion object {
         lateinit var appComponent: AppComponent
         var instance: App? = null
+        var requestRemote: RequestRemote? = null
         fun appContext(): Context? = instance?.applicationContext
+
+        fun initRequestRemote(baseUrl:String){
+            requestRemote = RequestRemoteImpl1(instance!!,Constants.IS_TEST_BUILD,baseUrl)
+        }
     }
 
     override fun onCreate() {
         super.onCreate()
-
         initAppComponent()
     }
+
 
 
     private fun initAppComponent() {
@@ -43,5 +52,6 @@ class App : Application() {
 )
 interface AppComponent {
     fun inject(mainActivity: TestActivity)
+    fun inject(mainActivity: SettingsFragment)
 }
 

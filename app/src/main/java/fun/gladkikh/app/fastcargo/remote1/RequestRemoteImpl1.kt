@@ -18,9 +18,7 @@ import java.util.*
 class RequestRemoteImpl1 constructor(
     context: Context,
     isDebug: Boolean,
-    baseUrl: String,
-    date: Date? = null
-
+    baseUrl: String
 ) : RequestRemote {
 
     private val request = Request(NetworkHandler(context))

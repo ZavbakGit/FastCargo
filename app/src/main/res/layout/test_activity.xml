@@ -55,6 +55,36 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btLogin1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login 111" />
+
+            <Button
+                android:id="@+id/btLogin2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login 222" />
+
+            <Button
+                android:id="@+id/btLogin3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login 333" />
+
+            <Button
+                android:id="@+id/btTestRequestRemote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Test reques remote" />
+
+            <Button
+                android:id="@+id/btSaveTestSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save Test Settings" />
+
+            <Button
                 android:id="@+id/btOpenSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,23 +108,11 @@
                 android:layout_height="wrap_content"
                 android:text="Прочитать Аккаут" />
 
-            <Button
-                android:id="@+id/btSaveTestSettings"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Save Test Settings" />
 
-            <Button
-                android:id="@+id/btTestRequestRemote"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Test reques remote" />
 
-            <Button
-                android:id="@+id/btLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Login" />
+
+
+
 
         </LinearLayout>
     </ScrollView>

@@ -1,5 +1,6 @@
 package `fun`.gladkikh.app.fastcargo.presentation.test
 
+import `fun`.gladkikh.app.fastcargo.App
 import `fun`.gladkikh.app.fastcargo.common.presentation.BaseViewModel
 import `fun`.gladkikh.app.fastcargo.common.type.Failure
 import `fun`.gladkikh.app.fastcargo.common.type.None
@@ -51,11 +52,14 @@ class TestViewModel @Inject constructor(
     fun saveTestSettings(){
         val settings =  SettingsEntity(
             login1C = "Админ",
-            password1C = "111",
+            password1C = "123",
             host = "http://172.31.255.150//UT/hs/api/",
             date = Date(),
             pdt = 1
         )
+        App.initRequestRemote(settings.host!!)
+        //ToDo Не забыть инициализировать
+
         saveSettingsUseCase(settings,viewModelScope){either ->
             either.either(::handleError) {
                 handleMessage("Сохранили!")
@@ -71,8 +75,24 @@ class TestViewModel @Inject constructor(
         }
     }
 
-    fun login(){
+    fun login1(){
         loginAccountUseCase("111",viewModelScope){either ->
+            either.either(::handleError) {
+                handleMessage(it.toString())
+            }
+        }
+    }
+
+    fun login2(){
+        loginAccountUseCase("222",viewModelScope){either ->
+            either.either(::handleError) {
+                handleMessage(it.toString())
+            }
+        }
+    }
+
+    fun login3(){
+        loginAccountUseCase("333",viewModelScope){either ->
             either.either(::handleError) {
                 handleMessage(it.toString())
             }

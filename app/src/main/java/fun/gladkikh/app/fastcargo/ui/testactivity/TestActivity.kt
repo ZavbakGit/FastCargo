@@ -50,8 +50,16 @@ class TestActivity : BaseActivity() {
             viewModel.testRemoteRequest()
         }
 
-        btLogin.setOnClickListener {
-            viewModel.login()
+        btLogin1.setOnClickListener {
+            viewModel.login1()
+        }
+
+        btLogin2.setOnClickListener {
+            viewModel.login2()
+        }
+
+        btLogin3.setOnClickListener {
+            viewModel.login3()
         }
 
     }

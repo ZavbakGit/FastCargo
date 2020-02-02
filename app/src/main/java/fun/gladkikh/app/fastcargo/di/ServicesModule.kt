@@ -1,12 +1,10 @@
 package `fun`.gladkikh.app.fastcargo.di
 
+import `fun`.gladkikh.app.fastcargo.App
 import `fun`.gladkikh.app.fastcargo.data.Preferences
 import `fun`.gladkikh.app.fastcargo.preferences.PreferencesImpl
 import `fun`.gladkikh.app.fastcargo.preferences.SharedPrefsManager
-import `fun`.gladkikh.app.fastcargo.remote.RequestRemote
-import `fun`.gladkikh.app.fastcargo.remote.RequestRemoteImpl
-import `fun`.gladkikh.app.fastcargo.remote.core.Request
-import `fun`.gladkikh.app.fastcargo.remote.service.ServiceFactory
+import `fun`.gladkikh.app.fastcargo.remote1.RequestRemote
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
@@ -40,7 +38,7 @@ class ServicesModule {
 
     @Provides
     @Singleton
-    fun provideRequestRemote(request: Request): RequestRemote {
-        return RequestRemoteImpl(request)
+    fun provideRequestRemote(): RequestRemote? {
+        return App.requestRemote
     }
 }

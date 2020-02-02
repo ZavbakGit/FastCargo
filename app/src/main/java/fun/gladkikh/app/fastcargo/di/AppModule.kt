@@ -7,7 +7,8 @@ import `fun`.gladkikh.app.fastcargo.domain.repository.AccountRepository
 import `fun`.gladkikh.app.fastcargo.domain.repository.SettingsRepository
 import `fun`.gladkikh.app.fastcargo.preferences.PreferencesImpl
 import `fun`.gladkikh.app.fastcargo.preferences.SharedPrefsManager
-import `fun`.gladkikh.app.fastcargo.remote.RequestRemote
+import `fun`.gladkikh.app.fastcargo.remote1.RequestRemote
+
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
@@ -34,9 +35,8 @@ class AppModule(private val context: Context) {
     @Provides
     @Singleton
     fun provideAccountRepository(preferences: Preferences,
-                                 requestRemote: RequestRemote,
                                  gson: Gson): AccountRepository {
-        return AccountRepositoryImpl(preferences,requestRemote,gson)
+        return AccountRepositoryImpl(preferences,gson)
     }
 
 
