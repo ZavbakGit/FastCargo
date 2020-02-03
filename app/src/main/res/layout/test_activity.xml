@@ -55,6 +55,30 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btCheckAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Проверить Аккаунт" />
+
+            <Button
+                android:id="@+id/btRemoveAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Удалить Аккаунт" />
+
+            <Button
+                android:id="@+id/btSaveAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Сохранить аккаунт" />
+
+            <Button
+                android:id="@+id/btGetAccount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Прочитать Аккаут" />
+
+            <Button
                 android:id="@+id/btCheckSetting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,22 +131,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Прочитать настройки" />
-
-            <Button
-                android:id="@+id/btSaveAccount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Сохранить аккаунт" />
-
-            <Button
-                android:id="@+id/btGetAccount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Прочитать Аккаут" />
-
-
-
-
 
 
 

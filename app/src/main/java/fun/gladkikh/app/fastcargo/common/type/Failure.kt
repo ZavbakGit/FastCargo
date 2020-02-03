@@ -12,3 +12,4 @@ open class ErrorDescriptionFailure(val errorDescriptionEntity: ErrorDescriptionE
     :Failure(errorDescriptionEntity.toString())
 
 open class SettingsFailure:Failure("Ошибка заполнения настроек!")
+open class AccountFailure:Failure("Ошибка чтения аккаута")

@@ -14,7 +14,7 @@ import `fun`.gladkikh.app.fastcargo.remote.service.ServiceFactory
 import android.content.Context
 
 
-class RequestRemoteImpl1 constructor(
+class RequestRemoteImpl constructor(
     context: Context,
     isDebug: Boolean,
     baseUrl: String

@@ -69,6 +69,15 @@ class TestActivity : BaseActivity() {
         btCheckSetting.setOnClickListener {
             viewModel.checkSetting()
         }
+
+        btRemoveAccount.setOnClickListener {
+            viewModel.removeAccount()
+        }
+
+        btCheckAccount.setOnClickListener {
+            viewModel.checkAccount()
+        }
+
     }
 
     private fun handleMessage(message: String?) {

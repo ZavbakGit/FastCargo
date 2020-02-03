@@ -4,7 +4,7 @@ import `fun`.gladkikh.app.fastcargo.di.AppModule
 import `fun`.gladkikh.app.fastcargo.di.ServicesModule
 import `fun`.gladkikh.app.fastcargo.di.ViewModelModule
 import `fun`.gladkikh.app.fastcargo.remote.RequestRemote
-import `fun`.gladkikh.app.fastcargo.remote.RequestRemoteImpl1
+import `fun`.gladkikh.app.fastcargo.remote.RequestRemoteImpl
 import `fun`.gladkikh.app.fastcargo.ui.settings.SettingsFragment
 import `fun`.gladkikh.app.fastcargo.ui.testactivity.TestActivity
 import `fun`.gladkikh.app.fastpallet8.Constants
@@ -26,7 +26,7 @@ class App : Application() {
         fun appContext(): Context? = instance?.applicationContext
 
         fun initRequestRemote(baseUrl:String){
-            requestRemote = RequestRemoteImpl1(instance!!,Constants.IS_TEST_BUILD,baseUrl)
+            requestRemote = RequestRemoteImpl(instance!!,Constants.IS_TEST_BUILD,baseUrl)
         }
     }
 

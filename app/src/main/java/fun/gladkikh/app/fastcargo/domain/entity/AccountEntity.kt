@@ -1,13 +1,23 @@
 package `fun`.gladkikh.app.fastcargo.domain.entity
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
 data class AccountEntity(
-    @SerializedName("user_id")
-    var id: String?,
-    var name: String?,
-    @SerializedName("user_date")
-    var date: Date?,
-    var password: String?
+    val user: String?,
+    val guid: String?,
+    val password: String?,
+    var settings: Settings?
+)
+
+data class Settings(
+    val name: String?,
+    val guid: String?,
+    @SerializedName("list_printer")
+    val listPrinter: List<Printer>
+)
+
+data class Printer(
+    val name: String?,
+    val guid: String?,
+    val current: Boolean?
 )
