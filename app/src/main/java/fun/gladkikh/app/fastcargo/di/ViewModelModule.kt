@@ -1,6 +1,9 @@
 package `fun`.gladkikh.app.fastcargo.di
 
 import `fun`.gladkikh.app.fastcargo.common.presentation.ViewModelFactory
+import `fun`.gladkikh.app.fastcargo.presentation.test.LoginViewModel
+import `fun`.gladkikh.app.fastcargo.presentation.test.MainViewModel
+import `fun`.gladkikh.app.fastcargo.presentation.test.RouteViewModel
 import `fun`.gladkikh.app.fastcargo.presentation.test.TestViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -17,5 +20,22 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(TestViewModel::class)
-    abstract fun bindMainViewModel(viewModel: TestViewModel): ViewModel
+    abstract fun bindTestViewModel(viewModel: TestViewModel): ViewModel
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RouteViewModel::class)
+    abstract fun bindRouteViewModel(viewModel: RouteViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LoginViewModel::class)
+    abstract fun bindLoginViewModel(viewModel: LoginViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
+
 }

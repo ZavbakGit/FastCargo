@@ -5,9 +5,11 @@ import `fun`.gladkikh.app.fastcargo.di.ServicesModule
 import `fun`.gladkikh.app.fastcargo.di.ViewModelModule
 import `fun`.gladkikh.app.fastcargo.remote.RequestRemote
 import `fun`.gladkikh.app.fastcargo.remote.RequestRemoteImpl
+import `fun`.gladkikh.app.fastcargo.ui.login.LoginActivity
+import `fun`.gladkikh.app.fastcargo.ui.main.MainActivity
+import `fun`.gladkikh.app.fastcargo.ui.route.RouteActivity
 import `fun`.gladkikh.app.fastcargo.ui.settings.SettingsFragment
 import `fun`.gladkikh.app.fastcargo.ui.testactivity.TestActivity
-import `fun`.gladkikh.app.fastpallet8.Constants
 import android.app.Application
 import android.content.Context
 import dagger.Component
@@ -26,7 +28,7 @@ class App : Application() {
         fun appContext(): Context? = instance?.applicationContext
 
         fun initRequestRemote(baseUrl:String){
-            requestRemote = RequestRemoteImpl(instance!!,Constants.IS_TEST_BUILD,baseUrl)
+            requestRemote = RequestRemoteImpl(instance!!, Constants.IS_TEST_BUILD,baseUrl)
         }
     }
 
@@ -53,5 +55,8 @@ class App : Application() {
 interface AppComponent {
     fun inject(mainActivity: TestActivity)
     fun inject(mainActivity: SettingsFragment)
+    fun inject(routeActivity: RouteActivity)
+    fun inject(loginActivity: LoginActivity)
+    fun inject(mainActivity: MainActivity)
 }
 

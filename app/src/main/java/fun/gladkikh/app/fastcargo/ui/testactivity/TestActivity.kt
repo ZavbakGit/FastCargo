@@ -7,6 +7,7 @@ import `fun`.gladkikh.app.fastcargo.common.type.Failure
 import `fun`.gladkikh.app.fastcargo.common.ui.BaseActivity
 import `fun`.gladkikh.app.fastcargo.common.ui.ext.onEvent
 import `fun`.gladkikh.app.fastcargo.presentation.test.TestViewModel
+import `fun`.gladkikh.app.fastcargo.ui.route.RouteActivity
 import `fun`.gladkikh.app.fastcargo.ui.settings.SettingsActivity
 import android.content.Intent
 import android.os.Bundle
@@ -78,6 +79,11 @@ class TestActivity : BaseActivity() {
             viewModel.checkAccount()
         }
 
+        btOpenRouteForm.setOnClickListener {
+            val i = Intent(baseContext, RouteActivity::class.java)
+            startActivity(i)
+        }
+
     }
 
     private fun handleMessage(message: String?) {
@@ -97,7 +103,5 @@ class TestActivity : BaseActivity() {
                 tvMessage.text = "fail: ${failure?.message ?: ""}" + "\n\n" + tvMessage.text
             }
         }
-
-
     }
 }

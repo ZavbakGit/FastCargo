@@ -1,10 +1,7 @@
 package `fun`.gladkikh.app.fastcargo.domain.usecase
 
 import `fun`.gladkikh.app.fastcargo.common.interactor.UseCase
-import `fun`.gladkikh.app.fastcargo.common.type.Either
-import `fun`.gladkikh.app.fastcargo.common.type.Failure
-import `fun`.gladkikh.app.fastcargo.common.type.None
-import `fun`.gladkikh.app.fastcargo.common.type.flatMap
+import `fun`.gladkikh.app.fastcargo.common.type.*
 import `fun`.gladkikh.app.fastcargo.domain.entity.AccountEntity
 import `fun`.gladkikh.app.fastcargo.domain.repository.AccountRepository
 import javax.inject.Inject
@@ -13,25 +10,38 @@ class LoginAccountUseCase @Inject constructor(
     private val accountRepository: AccountRepository
 ) : UseCase<None, String>() {
     override suspend fun run(params: String): Either<Failure, None> {
-        return accountRepository.getAccountEntity().flatMap { account ->
-            return@flatMap if (account.password == params) {
-                Either.Right(None())
-            } else {
+        val account = accountRepository.getAccountEntity()
 
-                val accountEntity = AccountEntity(
-                    user = null,
-                    guid = null,
-                    settings = null,
-                    password = null
-                )
+        if (account.isLeft) {
+            return login(params)
+        } else {
 
-                accountRepository.saveAccountEntity(accountEntity)
-                    .flatMap {
-                        accountRepository.login(params)
-                    }.flatMap {
-                        accountRepository.saveAccountEntity(it)
-                    }
+            return account.flatMap { accountEntity ->
+                if (accountEntity.password == params) {
+                    return@flatMap Either.Right(None())
+                } else {
+                    return@flatMap login(params)
+                }
             }
         }
     }
+
+
+    private fun login(password: String): Either<Failure, None> {
+        val accountEntity = AccountEntity(
+            user = null,
+            guid = null,
+            settings = null,
+            password = null
+        )
+
+        return accountRepository.saveAccountEntity(accountEntity)
+            .flatMap {
+                accountRepository.login(password)
+            }.flatMap {
+                accountRepository.saveAccountEntity(it)
+            }
+    }
+
+
 }
