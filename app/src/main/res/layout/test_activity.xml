@@ -55,10 +55,14 @@
             android:orientation="vertical">
 
             <Button
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:id="@+id/btOpenRouteForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Открыть форму" />
+                android:text="Открыть форму"
+                android:background="@color/secondaryColor"
+                android:foreground="?attr/selectableItemBackground"
+                />
 
             <Button
                 android:id="@+id/btCheckAccount"
@@ -133,6 +137,7 @@
                 android:text="Открыть настройки" />
 
             <Button
+
                 android:id="@+id/btReadSettings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

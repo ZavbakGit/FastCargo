@@ -1,4 +1,4 @@
-package `fun`.gladkikh.app.fastcargo.presentation.test
+package `fun`.gladkikh.app.fastcargo.presentation
 
 import `fun`.gladkikh.app.fastcargo.common.presentation.BaseViewModel
 import `fun`.gladkikh.app.fastcargo.common.type.None

@@ -6,11 +6,10 @@ import `fun`.gladkikh.app.fastcargo.common.MyLog
 import `fun`.gladkikh.app.fastcargo.common.type.Failure
 import `fun`.gladkikh.app.fastcargo.common.ui.BaseActivity
 import `fun`.gladkikh.app.fastcargo.common.ui.ext.onEvent
-import `fun`.gladkikh.app.fastcargo.presentation.test.RouteViewModel
+import `fun`.gladkikh.app.fastcargo.presentation.RouteViewModel
 import `fun`.gladkikh.app.fastcargo.ui.common.Command
 import `fun`.gladkikh.app.fastcargo.ui.common.OpenFormCommand
 import android.os.Bundle
-import android.os.PersistableBundle
 
 class RouteActivity : BaseActivity(){
     override val contentId = R.layout.route_activity

@@ -1,9 +1,9 @@
 package `fun`.gladkikh.app.fastcargo.di
 
 import `fun`.gladkikh.app.fastcargo.common.presentation.ViewModelFactory
-import `fun`.gladkikh.app.fastcargo.presentation.test.LoginViewModel
-import `fun`.gladkikh.app.fastcargo.presentation.test.MainViewModel
-import `fun`.gladkikh.app.fastcargo.presentation.test.RouteViewModel
+import `fun`.gladkikh.app.fastcargo.presentation.LoginViewModel
+import `fun`.gladkikh.app.fastcargo.presentation.MainViewModel
+import `fun`.gladkikh.app.fastcargo.presentation.RouteViewModel
 import `fun`.gladkikh.app.fastcargo.presentation.test.TestViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

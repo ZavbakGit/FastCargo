@@ -6,7 +6,7 @@ import `fun`.gladkikh.app.fastcargo.common.type.Failure
 import `fun`.gladkikh.app.fastcargo.common.ui.BaseActivity
 import `fun`.gladkikh.app.fastcargo.common.ui.ext.onEvent
 import `fun`.gladkikh.app.fastcargo.domain.entity.AccountEntity
-import `fun`.gladkikh.app.fastcargo.presentation.test.MainViewModel
+import `fun`.gladkikh.app.fastcargo.presentation.MainViewModel
 import `fun`.gladkikh.app.fastcargo.ui.common.Command
 import `fun`.gladkikh.app.fastcargo.ui.common.OpenFormCommand
 import android.os.Bundle
