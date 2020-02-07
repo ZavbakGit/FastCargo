@@ -7,6 +7,7 @@ import `fun`.gladkikh.app.fastcargo.common.type.Failure
 import `fun`.gladkikh.app.fastcargo.common.ui.BaseActivity
 import `fun`.gladkikh.app.fastcargo.common.ui.ext.onEvent
 import `fun`.gladkikh.app.fastcargo.presentation.test.TestViewModel
+import `fun`.gladkikh.app.fastcargo.ui.print.PrintActivity
 import `fun`.gladkikh.app.fastcargo.ui.route.RouteActivity
 import `fun`.gladkikh.app.fastcargo.ui.settings.SettingsActivity
 import android.content.Intent
@@ -83,6 +84,13 @@ class TestActivity : BaseActivity() {
             val i = Intent(baseContext, RouteActivity::class.java)
             startActivity(i)
         }
+
+
+        btPrint.setOnClickListener {
+            val i = Intent(baseContext, PrintActivity::class.java)
+            startActivity(i)
+        }
+
 
     }
 

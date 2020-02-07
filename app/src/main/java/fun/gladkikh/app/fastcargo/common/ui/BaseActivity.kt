@@ -2,6 +2,7 @@ package `fun`.gladkikh.app.fastcargo.common.ui
 
 import `fun`.gladkikh.app.fastcargo.ui.common.Navigator
 import `fun`.gladkikh.app.fastcargo.ui.common.OpenFormCommand
+import android.app.Activity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -47,6 +48,10 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
 
+}
+
+inline fun Activity?.base(block: BaseActivity.() -> Unit) {
+    (this as? BaseActivity)?.let(block)
 }
 
 

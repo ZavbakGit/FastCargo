@@ -5,8 +5,10 @@ import `fun`.gladkikh.app.fastcargo.ui.main.MainActivity
 import `fun`.gladkikh.app.fastcargo.ui.settings.SettingsActivity
 import `fun`.gladkikh.app.fastcargo.Constants.COMMAND_OPEN_LOGIN
 import `fun`.gladkikh.app.fastcargo.Constants.COMMAND_OPEN_MAIN
+import `fun`.gladkikh.app.fastcargo.Constants.COMMAND_OPEN_PRINT
 import `fun`.gladkikh.app.fastcargo.Constants.COMMAND_OPEN_ROUTE
 import `fun`.gladkikh.app.fastcargo.Constants.COMMAND_OPEN_SETTINGS
+import `fun`.gladkikh.app.fastcargo.ui.print.PrintActivity
 import `fun`.gladkikh.app.fastcargo.ui.route.RouteActivity
 import android.content.Context
 import android.content.Intent
@@ -21,6 +23,7 @@ class Navigator(val context: Context) {
             COMMAND_OPEN_LOGIN ->  context.startActivity<LoginActivity>()
             COMMAND_OPEN_MAIN ->  context.startActivity<MainActivity>(true)
             COMMAND_OPEN_ROUTE ->  context.startActivity<RouteActivity>(true)
+            COMMAND_OPEN_PRINT ->  context.startActivity<PrintActivity>(true)
         }
     }
 

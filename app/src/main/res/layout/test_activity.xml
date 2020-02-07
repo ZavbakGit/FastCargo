@@ -55,6 +55,12 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btPrint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ПЕЧАТЬ" />
+
+            <Button
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:id="@+id/btOpenRouteForm"
                 android:layout_width="match_parent"

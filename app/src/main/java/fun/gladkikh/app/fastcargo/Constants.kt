@@ -20,6 +20,7 @@ object Constants {
     const val COMMAND_OPEN_SETTINGS = "open_form_settings"
     const val COMMAND_OPEN_LOGIN = "open_form_login"
     const val COMMAND_OPEN_ROUTE = "open_form_route"
+    const val COMMAND_OPEN_PRINT = "open_form_print"
 
     const val IS_TEST_BUILD = true
 }
