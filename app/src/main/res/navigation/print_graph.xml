@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/mainPrintFragment"
-        android:name="fun.gladkikh.app.fastcargo.ui.print.MainPrintFragment"
+        android:name="fun.gladkikh.app.fastcargo.ui.print.PrintMainFragment"
         android:label="MainPrintFragment" />
 </navigation>

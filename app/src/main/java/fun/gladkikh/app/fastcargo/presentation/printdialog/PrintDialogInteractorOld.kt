@@ -12,23 +12,25 @@ import javax.inject.Inject
  * @author erick
  * @since 2018-12-31
  */
-class PrintDialogInteractor @Inject constructor() : ViewModel(), PrintDialogContract.Interactor {
+class PrintDialogInteractorOld @Inject constructor() : ViewModel(), PrintDialogContractOld.Interactor {
 
-    private val commandEvent = SingleLiveEvent<PrintDialogContract.Interactor.Command>()
+    private val commandEvent = SingleLiveEvent<PrintDialogContractOld.Interactor.Command>()
     private val count = MutableLiveData<Int>()
-    private val stateEvent = SingleLiveEvent<PrintDialogContract.Interactor.State>()
+    private val stateEvent = SingleLiveEvent<PrintDialogContractOld.Interactor.State>()
 
     val date = MutableLiveData<Date>()
+
+    val dateCreate = Date()
 
     init {
         date.value = Date()
     }
 
-    override fun getCommandEvent(): LiveData<PrintDialogContract.Interactor.Command> {
+    override fun getCommandEvent(): LiveData<PrintDialogContractOld.Interactor.Command> {
         return commandEvent
     }
 
-    override fun issueCommand(command: PrintDialogContract.Interactor.Command) {
+    override fun issueCommand(command: PrintDialogContractOld.Interactor.Command) {
         commandEvent.value = command
     }
 
@@ -40,11 +42,11 @@ class PrintDialogInteractor @Inject constructor() : ViewModel(), PrintDialogCont
         count.value = count.value?:0 + password
     }
 
-    override fun setState(state: PrintDialogContract.Interactor.State) {
+    override fun setState(state: PrintDialogContractOld.Interactor.State) {
         stateEvent.value = state
     }
 
-    override fun getStateEvent(): LiveData<PrintDialogContract.Interactor.State> {
+    override fun getStateEvent(): LiveData<PrintDialogContractOld.Interactor.State> {
         return stateEvent
     }
 }

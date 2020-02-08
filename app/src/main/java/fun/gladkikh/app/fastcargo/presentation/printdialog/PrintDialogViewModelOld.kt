@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import javax.inject.Inject
 
-class PrintDialogViewModel @Inject constructor() :BaseViewModel(),PrintDialogContract.ViewModel{
+class PrintDialogViewModelOld @Inject constructor() :BaseViewModel(),PrintDialogContractOld.ViewModel{
 
     private val countStream = MutableLiveData<Int>()
     private val messageStream = MutableLiveData<String>()

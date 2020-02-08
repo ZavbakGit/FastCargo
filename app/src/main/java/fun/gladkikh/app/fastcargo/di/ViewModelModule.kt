@@ -5,9 +5,11 @@ import `fun`.gladkikh.app.fastcargo.presentation.LoginViewModel
 import `fun`.gladkikh.app.fastcargo.presentation.MainViewModel
 import `fun`.gladkikh.app.fastcargo.presentation.PrintViewModel
 import `fun`.gladkikh.app.fastcargo.presentation.RouteViewModel
-import `fun`.gladkikh.app.fastcargo.presentation.printdialog.PrintDialogInteractor
-import `fun`.gladkikh.app.fastcargo.presentation.printdialog.PrintDialogViewModel
+import `fun`.gladkikh.app.fastcargo.presentation.print.MainPrintViewModel
+import `fun`.gladkikh.app.fastcargo.presentation.printdialog.PrintDialogInteractorOld
+import `fun`.gladkikh.app.fastcargo.presentation.printdialog.PrintDialogViewModelOld
 import `fun`.gladkikh.app.fastcargo.presentation.test.TestViewModel
+import `fun`.gladkikh.app.fastcargo.ui.print.PrintMainFragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.Binds
@@ -48,11 +50,17 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(PrintDialogViewModel::class)
-    abstract fun bindPrintDialogViewModel(viewModel: PrintDialogViewModel): ViewModel
+    @ViewModelKey(PrintDialogViewModelOld::class)
+    abstract fun bindPrintDialogViewModel(viewModel: PrintDialogViewModelOld): ViewModel
 
     @Binds
     @IntoMap
-    @ViewModelKey(PrintDialogInteractor::class)
-    abstract fun bindPrintDialogInteractor(viewModel: PrintDialogInteractor): ViewModel
+    @ViewModelKey(PrintDialogInteractorOld::class)
+    abstract fun bindPrintDialogInteractor(viewModel: PrintDialogInteractorOld): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainPrintViewModel::class)
+    abstract fun bindMainPrintViewModel(viewModel: MainPrintViewModel): ViewModel
+
 }

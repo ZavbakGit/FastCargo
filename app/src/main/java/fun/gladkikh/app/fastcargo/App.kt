@@ -7,8 +7,10 @@ import `fun`.gladkikh.app.fastcargo.remote.RequestRemote
 import `fun`.gladkikh.app.fastcargo.remote.RequestRemoteImpl
 import `fun`.gladkikh.app.fastcargo.ui.login.LoginActivity
 import `fun`.gladkikh.app.fastcargo.ui.main.MainActivity
-import `fun`.gladkikh.app.fastcargo.ui.print.MainPrintFragment
 import `fun`.gladkikh.app.fastcargo.ui.print.PrintDialogFragment
+import `fun`.gladkikh.app.fastcargo.ui.print.PrintMainFragment
+import `fun`.gladkikh.app.fastcargo.ui.print.old.MainPrintFragmentOld
+import `fun`.gladkikh.app.fastcargo.ui.print.old.PrintDialogFragmentOld
 import `fun`.gladkikh.app.fastcargo.ui.route.RouteActivity
 import `fun`.gladkikh.app.fastcargo.ui.settings.SettingsFragment
 import `fun`.gladkikh.app.fastcargo.ui.testactivity.TestActivity
@@ -60,7 +62,9 @@ interface AppComponent {
     fun inject(routeActivity: RouteActivity)
     fun inject(loginActivity: LoginActivity)
     fun inject(mainActivity: MainActivity)
-    fun inject(mainPrintFragment: MainPrintFragment)
+    fun inject(mainPrintFragment: MainPrintFragmentOld)
+    fun inject(printDialogFragment: PrintDialogFragmentOld)
+    fun inject(printMainFragment: PrintMainFragment)
     fun inject(printDialogFragment: PrintDialogFragment)
 
 }

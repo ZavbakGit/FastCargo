@@ -1,13 +1,13 @@
-package `fun`.gladkikh.app.fastcargo.ui.print
+package `fun`.gladkikh.app.fastcargo.ui.print.old
 
 import `fun`.gladkikh.app.fastcargo.App
 import `fun`.gladkikh.app.fastcargo.R
-import `fun`.gladkikh.app.fastcargo.common.presentation.StateDialog
 import `fun`.gladkikh.app.fastcargo.common.ui.BaseActivity
 import `fun`.gladkikh.app.fastcargo.common.ui.base
 import `fun`.gladkikh.app.fastcargo.common.ui.ext.onEvent
-import `fun`.gladkikh.app.fastcargo.presentation.print.MainPrintViewModel
-import `fun`.gladkikh.app.fastcargo.ui.print.old.PrintDialogFragmentOld
+import `fun`.gladkikh.app.fastcargo.presentation.printdialog.PrintDialogContractOld
+import `fun`.gladkikh.app.fastcargo.presentation.printdialog.PrintDialogInteractorOld
+import `fun`.gladkikh.app.fastcargo.presentation.printdialog.PrintDialogViewModelOld
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,17 +18,17 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import kotlinx.android.synthetic.main.print_dialog.*
 import javax.inject.Inject
 
-class PrintDialogFragment : DialogFragment() {
+
+class PrintDialogFragmentOld : DialogFragment(){
     companion object {
         const val TAG = "PrintDialog"
 
-        fun newInstance(): PrintDialogFragment {
+        fun newInstance(): PrintDialogFragmentOld {
 
             val dialog =
-                PrintDialogFragment()
+                PrintDialogFragmentOld()
             val args = Bundle().apply {
                 //putString(EXTRA_TITLE, title)
 
@@ -41,21 +41,33 @@ class PrintDialogFragment : DialogFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var viewModel: MainPrintViewModel
+    private lateinit var viewModel: PrintDialogViewModelOld
+    private lateinit var interactor: PrintDialogInteractorOld
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         App.appComponent.inject(this)
 
+
         viewModel = viewModel {
-            onEvent(getdialogBarcode(), {
-                tvBarcode.text = it ?: "Пусто"
-            }
 
-            )
-
-            setStateDialog(StateDialog.Open)
         }
+
+        interactor = viewModel {
+            onEvent(getCommandEvent(),{command->
+                when(command) {
+                    is PrintDialogContractOld.Interactor.Command.ShowMessage -> {
+                        viewModel.setMessage(command.message)
+                    }
+                    is PrintDialogContractOld.Interactor.Command.Close -> {
+                        dismiss()
+                    }
+                }
+            })
+
+            setState(PrintDialogContractOld.Interactor.State.ALIVE)
+        }
+
     }
 
     override fun onCreateView(
@@ -67,18 +79,12 @@ class PrintDialogFragment : DialogFragment() {
         return inflater.inflate(R.layout.print_dialog, container, false)
     }
 
-    override fun onStop() {
-        super.onStop()
-        viewModel.setStateDialog(StateDialog.Close)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        btSubmit.setOnClickListener {
-            viewModel.setCount(editText.text.toString().toIntOrNull()?:0)
-            dismiss()
-        }
-    }
+
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return super.onCreateDialog(savedInstanceState).apply {
@@ -103,6 +109,4 @@ class PrintDialogFragment : DialogFragment() {
         vm.body()
         return vm
     }
-
-
 }

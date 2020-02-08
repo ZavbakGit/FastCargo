@@ -4,45 +4,42 @@ import `fun`.gladkikh.app.fastcargo.App
 import `fun`.gladkikh.app.fastcargo.R
 import `fun`.gladkikh.app.fastcargo.common.ui.BaseFragment
 import `fun`.gladkikh.app.fastcargo.common.ui.ext.onEvent
-import `fun`.gladkikh.app.fastcargo.presentation.PrintViewModel
-import `fun`.gladkikh.app.fastcargo.presentation.printdialog.PrintDialogInteractor
+import `fun`.gladkikh.app.fastcargo.presentation.print.MainPrintViewModel
+import `fun`.gladkikh.app.fastcargo.ui.print.old.PrintDialogFragmentOld
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.main_print_fragment.*
 
-class MainPrintFragment : BaseFragment() {
+class PrintMainFragment : BaseFragment() {
     override val layoutId = R.layout.main_print_fragment
-
-    private lateinit var viewModel: PrintViewModel
-    private lateinit var printDialogInteractor: PrintDialogInteractor
+    private lateinit var viewModel: MainPrintViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         App.appComponent.inject(this)
 
-        printDialogInteractor = viewModel {
-            onEvent(date,{
-                tvMessage.text = "${it.toString()}"
+        viewModel = viewModel {
+            onEvent(getStartDialog(), {
+                //Старт диалога
+                PrintDialogFragment.newInstance()
+                    .show(
+                        activity!!.supportFragmentManager,
+                        PrintDialogFragment.TAG
+                    )
+            })
+
+            onEvent(getdialogCount(), {
+                base {
+                    showMessage(it.toString())
+                }
             })
         }
-
-
-        viewModel = viewModel {
-
-        }
-
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         btShowDialog.setOnClickListener {
-            printDialogInteractor.setCount(10)
-            PrintDialogFragment.newInstance().show(
-                activity!!.supportFragmentManager, PrintDialogFragment.TAG
-            )
+            viewModel.setBarcode((0..100).random().toString())
         }
     }
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
 
-interface PrintDialogContract {
+interface PrintDialogContractOld {
     interface ViewModel {
         fun getCountStream(): MutableLiveData<Int>
         fun getMessageStream(): LiveData<String>
